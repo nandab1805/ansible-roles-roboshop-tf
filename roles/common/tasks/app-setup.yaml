@@ -29,7 +29,7 @@
     dest: /tmp
     mode: '0644'
 
-- name: Extract the application package
+- name: Extract the {{component}} package
   ansible.builtin.unarchive:
     src: /tmp/{{ component }}-{{ app_version }}.zip
     dest: /app
