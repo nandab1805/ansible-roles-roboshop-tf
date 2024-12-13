@@ -22,13 +22,31 @@
 #     src: /tmp/{{component}}.zip
 #     dest: /app 
 #     remote_src: yes
-- name: Download foo.conf
-  ansible.builtin.get_url:
-    url: "{{NEXUS_URL}}/{{component}}/{{group_id}}/{{component}}/{{app_version}}/{{component}-{{app_version}}.zip"
-    dest: /tmp
 
-- name: extract {{component}} application
+- name: Download the application package
+  ansible.builtin.get_url:
+    url: "{{ NEXUS_URL }}/{{ component }}/{{ group_id }}/{{ component }}/{{ app_version }}/{{ component }}-{{ app_version }}.zip"
+    dest: /tmp/{{ component }}-{{ app_version }}.zip
+    mode: '0644'
+
+- name: Extract the application package
   ansible.builtin.unarchive:
-    src: /tmp/{{component}}-{{app_version}}.zip
-    dest: /app 
+    src: /tmp/{{ component }}-{{ app_version }}.zip
+    dest: /app
     remote_src: yes
+    owner: centos
+    group: centos
+
+
+
+
+# - name: Download foo.conf
+#   ansible.builtin.get_url:
+#     url: "{{NEXUS_URL}}/{{component}}/{{group_id}}/{{component}}/{{app_version}}/{{component}-{{app_version}}.zip"
+#     dest: /tmp
+
+# - name: extract {{component}} application
+#   ansible.builtin.unarchive:
+#     src: /tmp/{{component}}-{{app_version}}.zip
+#     dest: /app 
+#     remote_src: yes
