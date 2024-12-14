@@ -8,5 +8,5 @@ CART_HOST: cart.app-dev.nanda.cfd
 SHIPPING_HOST: shipping.app-dev.nanda.cfd
 PAYMENT_HOST: payment.app-dev.nanda.cfd
 DISPATCH_HOST: dispatch.app-dev.nanda.cfd
-NEXUS_URL: http://44.210.122.168:8081/repository
+NEXUS_URL: http://172.31.91.191:8081/repository
 group_id: "com/roboshop"
